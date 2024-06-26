@@ -1,15 +1,14 @@
 import express from 'express'
+import middleware from './middleware/logs.js'
 const app = express()
+// MiddleWare
+app.use(middleware)
 
-app.param("id", (req, res, next, id) => {
-    console.log(`id: ${id}`)
-    next()
+app.get('/', (req, res) => {
+    res.send('<h1>Salom Shuxratello</h1>')
 })
-
-app.get("/user/:id", (req, res) => {
-    res.send("Hello World")
+app.get('/about', (req, res) => {
+    res.send('<h1>Salom Baburello</h1>')
 })
-
-
 
 app.listen(8000, () => console.log('Server Ishga Tushdi'))
